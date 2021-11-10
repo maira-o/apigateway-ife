@@ -12,7 +12,7 @@ function selectProxyHost(req) {
     else if (req.path.startsWith('/educador'))
         return 'http://localhost:3001/';
     else if (req.path.startsWith('/crianca'))
-        return 'http://localhost:3001/';
+        return 'http://localhost:5000/';
 }
  
 app.use((req, res, next) => {
