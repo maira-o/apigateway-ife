@@ -20,5 +20,5 @@ app.use((req, res, next) => {
 });
  
 app.listen(10000, () => {
-    console.log('API Gateway running!');
+    console.log('IFE API Gateway is running! :)');
 });

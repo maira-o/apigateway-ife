@@ -4,6 +4,7 @@
   "description": "ife project",
   "main": "index.js",
   "scripts": {
+    "devStart": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,8 +18,13 @@
   },
   "homepage": "https://github.com/maira-o/apigateway-ife#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.3",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
