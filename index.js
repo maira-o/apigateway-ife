@@ -1,5 +1,5 @@
 //index.js
-require("dotenv-safe").config();
+// require("dotenv-safe").config();
 const jwt = require('jsonwebtoken');
 const dotenv    = require('dotenv');
 const httpProxy = require('express-http-proxy');
