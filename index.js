@@ -4,13 +4,23 @@ const jwt = require('jsonwebtoken');
 const dotenv    = require('dotenv');
 const httpProxy = require('express-http-proxy');
 const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 const app = express();
 var logger = require('morgan');
  
 app.use(logger('dev'));
+app.use(cors());
 
 dotenv.config();
- 
+
+mongoose.connect(
+    process.env.DB_CONNECT, 
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+  });
+  
 function selectProxyHost(req) {
     if (req.path.startsWith('/usuario'))
         return process.env.APP_USUARIO_URL;
