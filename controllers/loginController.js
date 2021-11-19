@@ -1,6 +1,6 @@
 const tokenController = require('../controllers/tokenController');
-const { loginValidation, isEmail } = require('../validations');
-
+const Joi = require('joi');
+const validator = require("email-validator");
 const Usuario = require('../models/Usuario');
 const bcrypt = require('bcryptjs');
 
@@ -26,6 +26,16 @@ exports.login = async (req, res) => {
         return res.status(403).json({ status: 403, message: "Senha incorreta"});
     }
 
-    const token = tokenController.generateToken(user);
+    const token = tokenController.generateToken(usuario);
     res.status(200).json({ status: 200, message: "Login efetuado com sucesso" , token: token });
 };
+
+const loginValidation = (data) => {
+    const schema = Joi.object({
+        email: Joi.string().required(),
+        senha: Joi.string().required(),
+    });
+    return schema.validate(data);
+}
+
+const isEmail = (email) => { return validator.validate(email) }
