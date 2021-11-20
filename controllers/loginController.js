@@ -1,8 +1,8 @@
-const tokenController = require('../controllers/tokenController');
-const Joi = require('joi');
-const validator = require("email-validator");
-const Usuario = require('../models/Usuario');
-const bcrypt = require('bcryptjs');
+const Joi               = require('joi');
+const validator         = require("email-validator");
+const bcrypt            = require('bcryptjs');
+const Usuario           = require('../models/Usuario');
+const tokenController   = require('../controllers/tokenController');
 
 exports.login = async (req, res) => {
     const data = req.body;
@@ -27,7 +27,7 @@ exports.login = async (req, res) => {
     }
 
     const token = tokenController.generateToken(usuario);
-    res.status(200).json({ status: 200, message: "Login efetuado com sucesso" , token: token });
+    res.status(201).json({ status: 201, message: "Login efetuado com sucesso" , token: token });
 };
 
 const loginValidation = (data) => {

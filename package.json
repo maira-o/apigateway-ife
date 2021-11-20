@@ -4,7 +4,8 @@
   "description": "ife project",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js",
+    "start": "node index.js",
+    "devStart": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,6 +30,7 @@
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
+    "mongoose-hidden": "^1.9.1",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
