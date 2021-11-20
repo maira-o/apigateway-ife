@@ -23,7 +23,7 @@ mongoose.connect(
         useUnifiedTopology: true
   });
   
-function selectProxyHost(req) {
+function selectProxyHost(req, res) {
     if (req.path.startsWith('/usuario'))
         return process.env.APP_USUARIO_URL;
     else if (req.path.startsWith('/educador'))
@@ -31,7 +31,7 @@ function selectProxyHost(req) {
     else if (req.path.startsWith('/crianca'))
         return process.env.APP_CRIANCA_URL;
     else
-        return { status: 404, message: "Não encontrado"}
+        return res.status(404).send({ status: 404, message: "Não encontrado"});
 }
 
 app.post('/login', (req, res) => {
@@ -39,7 +39,7 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/usuario', (req, res, next) => {
-    httpProxy(selectProxyHost(req))(req, res, next);
+    httpProxy(selectProxyHost(req, res))(req, res, next);
 });
 
 app.use((req, res, next) => {
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-    httpProxy(selectProxyHost(req))(req, res, next);
+    httpProxy(selectProxyHost(req, res))(req, res, next);
 });
 
 const port = process.env.PORT;

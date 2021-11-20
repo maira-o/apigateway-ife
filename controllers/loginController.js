@@ -7,9 +7,9 @@ const tokenController   = require('../controllers/tokenController');
 exports.login = async (req, res) => {
     const data = req.body;
 
-    const isComplete = loginValidation(data);
+    const isComplete = await loginValidation(data);
     if(isComplete.error){
-        return res.status(400).send({ status: 400, message: error.details[0].message });
+        return res.status(400).send({ status: 400, message: isComplete.error.details[0].message });
     }
 
     let usuario;
