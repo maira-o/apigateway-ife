@@ -21,7 +21,8 @@ mongoose.connect(
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
-  });
+    }
+);
   
 function selectProxyHost(req, res) {
     if (req.path.startsWith('/usuario'))
@@ -59,4 +60,4 @@ app.listen(port, function (err) {
       console.log("err >>>")
       console.log(err)
     }
-  });
+});

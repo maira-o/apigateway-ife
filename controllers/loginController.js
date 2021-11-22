@@ -27,7 +27,7 @@ exports.login = async (req, res) => {
     }
 
     const token = tokenController.generateToken(usuario);
-    res.status(201).json({ status: 201, message: "Login efetuado com sucesso" , token: token });
+    res.status(201).json({ status: 201, message: "Login efetuado com sucesso", token: token, usuario: usuario });
 };
 
 const loginValidation = (data) => {

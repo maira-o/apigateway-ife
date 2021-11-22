@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
 
 exports.generateToken = (user) => {
-    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
+    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET, { expiresIn : 60*60*12 }); // expires in 12 hours
     return token;
 };
 
 module.exports.validation = function(req, res, next){
     const token = req.header('token');
-
+    
     if(!token) {
         return res.status(401).send({ status: 401, message: 'Acesso negado!' });
     }
